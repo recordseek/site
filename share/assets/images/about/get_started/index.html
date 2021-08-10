@@ -1,0 +1,679 @@
+
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
+<head>
+    <title>Citations Simplified - RecordSeek</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"NRJS-27f7eb4994591fa5743",applicationID:"440306668"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1210.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="http://recordseek.com/share/assets/images/about/get_started/favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic,300italic,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../../../../../assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../../assets/plugins/flexslider/flexslider.css">
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="../../../../../assets/css/styles-2.css">
+    <link id="theme-style" rel="stylesheet" href="../../../../../assets/css/jssocials.css">
+    <link id="theme-style" rel="stylesheet" href="../../../../../assets/css/jssocials-theme-flat.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --><!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    <style>#browsers {
+		  background-image: url('http://recordseek.com/share/assets/images/about/get_started/assets/images/browser-logos.png');
+		  height:70px;
+		  width: 70px;
+		  background-repeat: no-repeat;
+		  background-size: auto 70px;
+		  display:inline-block;
+		}
+
+		#browser.chrome {
+		  background-postion:-2px;
+		}
+		.edge {
+		background-position: -68px;
+		}
+		.firefox {
+		background-position: -140px;
+		}
+		.opera {
+		background-position: -210px;
+		}
+		.safari {
+		background-position: -280px;
+		}
+		.tooltip {
+		    position: relative;
+		    display: inline-block;
+		    opacity:.9;
+		}
+		.tooltip .tooltiptext {
+		    visibility: hidden;
+		    width: 120px;
+		    background-color: black;
+		    color: #fff;
+		    text-align: center;
+		    border-radius: 6px;
+		    padding: 5px 0;
+		    position: absolute;
+		    z-index: 1;
+		    top: 105%;
+		    left: 50%;
+		    margin-left: -60px;
+		}
+		.tooltip .tooltiptext::after {
+		    content: "";
+		    position: absolute;
+		    bottom: 100%;
+		    left: 50%;
+		    margin-left: -5px;
+		    border-width: 5px;
+		    border-style: solid;
+		    border-color: transparent transparent black transparent;
+		}
+		.tooltip:hover .tooltiptext {
+		    visibility: visible;
+		}
+		.coming_soon a {
+		  opacity: .7;
+		}
+	</style>
+</head>
+
+<body class="">
+<input type="hidden" id="bookmarklet" value="javascript:(function()%7Bjavascript%3A(function()%7Bfunction%20h(a)%7Bvar%20g%3Ddocument.getElementsByTagName('*')%2Cb%3Bfor(b%20in%20g)if(-1%3C('%20'%2Bg%5Bb%5D.className%2B'%20').indexOf('%20'%2Ba%2B'%20'))return%20g%5Bb%5D%7Dfunction%20e(b)%7Bvar%20a%3Ddocument.getElementsByTagName('meta')%3Bfor(i%3D0%3Bi%3Ca.length%3Bi%2B%2B)if(a%5Bi%5D.getAttribute('property')%3D%3Db)return%20a%5Bi%5D.getAttribute('content')%3Breturn!1%7Dvar%20k%3D'https%3A'%3D%3Ddocument.location.protocol%3F'https%3A%2F%2F'%3A'http%3A%2F%2F'%2Ca%3D''%3Bh('citation')%26%26(a%3Dh('citation').getElementsByTagName('p')%2C0%3Ca.length%26%26(a%3Da%5B0%5D.textContent%7C%7Ca%5B0%5D.innerText))%3Bvar%20b%3Ddocument.getElementsByTagName('h1')%2Cc%3D''%3B0%3Cb.length%26%26(c%3Db%5B0%5D.textContent%7C%7Cb%5B0%5D.innerText)%3Bb%3Ddocument.title%3Bc%26%26c.length%3Edocument.title.length%26%26(b%3Dc)%3Bvar%20d%3D''%2B(window.getSelection%3Fwindow.getSelection()%3Adocument.getSelection%3Fdocument.getSelection()%3Adocument.selection.createRange().text)%3B''%3D%3Dd%26%26e('description')%3Fd%3De('description')%3A''%3D%3Dd%26%26e('og%3Adescription')%26%26(d%3De('og%3Adescription'))%3Bf%3Dk%2B'recordseek.com%2Fshare%2F%3F_%3D'%2B(new%20Date).getTime()%2B'%26url%3D'%2BencodeURIComponent(window.location.href)%2B'%26h1%3D'%2Bc%2B'%26citation%3D'%2BencodeURIComponent(a)%2B'%26title%3D'%2BencodeURIComponent(b)%2B'%26notes%3D'%2BencodeURIComponent(d)%3BRecordSeek%3Dfunction()%7Bvar%20a%3Dwindow.open(f%2C'rseekwindow'%2C'location%3D1%2Clinks%3D0%2Cscrollbars%3D0%2Ctoolbar%3D0%2Cwidth%3D800%2C%20height%3D620%2C%20top%3D'%2B(screen.height%2F2-310)%2B'%2C%20left%3D'%2B(screen.width%2F2-400))%3Ba%3Fa.focus()%3Awindow.location%3Df%7D%3B%2FFirefox%2F.test(navigator.userAgent)%3FsetTimeout(RecordSeek%2C0)%3ARecordSeek()%7D)()%7D)()">
+<!-- ******HEADER****** -->
+<header id="header" class="header navbar-fixed-top">
+    <div class="container">
+        <h1 class="logo">
+            <a href="../../../../../index.html"><span class="text">RecordSeek</span></a>
+        </h1><!--//logo-->
+        <nav class="main-nav navbar-right" role="navigation">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+                <!--//nav-toggle-->
+            </div>
+            <!--//navbar-header-->
+            <div id="navbar-collapse" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item"><a href="../../../../../index.html">Home</a></li>
+                    <li class="nav-item"><a href="../../../../../about/index.html">About</a></li>
+                    <li class="nav-item"><a href="../../../../../faq/index.html">FAQ</a></li>
+                    <li class="nav-item"><a href="../../../../../mobile/index.html">Mobile Install</a></li>
+                    <li class="nav-item"><a href="../../../../../contact/index.html">Contact</a></li>
+                    <!--//dropdown-->
+                    <!--<li class="nav-item nav-item-cta last">-->
+                    <!--    <a class="btn btn-cta btn-cta-secondary--><!--" href="/get_started">Get Started</a></li>-->
+                </ul>
+                <!--//nav-->
+            </div>
+            <!--//navabr-collapse-->
+        </nav>
+        <!--//main-nav-->
+    </div>
+    <!--//container-->
+</header>
+<!--//header-->
+
+    <div class="bg-slider-wrapper">
+        <div class="flexslider bg-slider">
+            <ul class="slides">
+                <li class="slide slide-1"></li>
+                <li class="slide slide-2"></li>
+                <li class="slide slide-3"></li>
+            </ul>
+        </div>
+    </div>
+    <!--//bg-slider-wrapper-->
+
+    <section class="promo section section-on-bg">
+        <div class="container text-center">
+            <h2 class="title">Record a website as a source,<br/>with virtually no effort.</h2>
+
+            <p class="intro">RecordSeek makes it effortless to record your source citations from the web. Get started, and start saving sources.</p>
+
+
+            <h3>Install one of our browser extensions<br></h3>
+            <div>
+              <div class="tooltip">
+                <a href="https://chrome.google.com/webstore/detail/recordseek/ekdikahbgfofidpjnldofcelffahiefl" target="_blank" class="tooltio">
+                  <span id="browsers" class="chrome"></span>
+                </a> 
+                <span class="tooltiptext">Chrome</span>
+              </div>
+              <div class="tooltip">
+                <a href="https://addons.mozilla.org/en-US/firefox/addon/recordseek/" target="_blank" class="tooltio">
+                  <span id="browsers" class="firefox"></span>
+                </a> 
+                <span class="tooltiptext">Firefox</span>
+              </div>
+              <div class="tooltip">
+                <a href="https://addons.opera.com/en/extensions/details/recordseek/" target="_blank" class="tooltio">
+                  <span id="browsers" class="opera"></span>
+                </a> 
+                <span class="tooltiptext">Opera</span>
+              </div>
+              <div class="tooltip coming_soon">
+                <a href="#" target="_blank" class="tooltio">
+                  <span id="browsers" class="edge"></span>
+                </a> 
+                <span class="tooltiptext">Edge<br>Coming Soon</span>
+              </div>
+              <div class="tooltip">
+                <a href="https://safari-extensions.apple.com/details/?id=simplerain.recordseek-473Y9542P2" class="tooltio">
+                  <span id="browsers" class="safari"></span>
+                </a>
+                <span class="tooltiptext">Safari</span>
+              </div>
+            </div>
+            <div style="padding-top:15px;">
+              <p>or drag the button below to your browser's bookmark bar</p>
+              <p><a class="btn btn-sm btn-cta-primary" href="javascript:(function()%7Bjavascript%3A(function()%7Bfunction%20h(a)%7Bvar%20g%3Ddocument.getElementsByTagName('*')%2Cb%3Bfor(b%20in%20g)if(-1%3C('%20'%2Bg%5Bb%5D.className%2B'%20').indexOf('%20'%2Ba%2B'%20'))return%20g%5Bb%5D%7Dfunction%20e(b)%7Bvar%20a%3Ddocument.getElementsByTagName('meta')%3Bfor(i%3D0%3Bi%3Ca.length%3Bi%2B%2B)if(a%5Bi%5D.getAttribute('property')%3D%3Db)return%20a%5Bi%5D.getAttribute('content')%3Breturn!1%7Dvar%20k%3D'https%3A'%3D%3Ddocument.location.protocol%3F'https%3A%2F%2F'%3A'http%3A%2F%2F'%2Ca%3D''%3Bh('citation')%26%26(a%3Dh('citation').getElementsByTagName('p')%2C0%3Ca.length%26%26(a%3Da%5B0%5D.textContent%7C%7Ca%5B0%5D.innerText))%3Bvar%20b%3Ddocument.getElementsByTagName('h1')%2Cc%3D''%3B0%3Cb.length%26%26(c%3Db%5B0%5D.textContent%7C%7Cb%5B0%5D.innerText)%3Bb%3Ddocument.title%3Bc%26%26c.length%3Edocument.title.length%26%26(b%3Dc)%3Bvar%20d%3D''%2B(window.getSelection%3Fwindow.getSelection()%3Adocument.getSelection%3Fdocument.getSelection()%3Adocument.selection.createRange().text)%3B''%3D%3Dd%26%26e('description')%3Fd%3De('description')%3A''%3D%3Dd%26%26e('og%3Adescription')%26%26(d%3De('og%3Adescription'))%3Bf%3Dk%2B'recordseek.com%2Fshare%2F%3F_%3D'%2B(new%20Date).getTime()%2B'%26url%3D'%2BencodeURIComponent(window.location.href)%2B'%26h1%3D'%2Bc%2B'%26citation%3D'%2BencodeURIComponent(a)%2B'%26title%3D'%2BencodeURIComponent(b)%2B'%26notes%3D'%2BencodeURIComponent(d)%3BRecordSeek%3Dfunction()%7Bvar%20a%3Dwindow.open(f%2C'rseekwindow'%2C'location%3D1%2Clinks%3D0%2Cscrollbars%3D0%2Ctoolbar%3D0%2Cwidth%3D800%2C%20height%3D620%2C%20top%3D'%2B(screen.height%2F2-310)%2B'%2C%20left%3D'%2B(screen.width%2F2-400))%3Ba%3Fa.focus()%3Awindow.location%3Df%7D%3B%2FFirefox%2F.test(navigator.userAgent)%3FsetTimeout(RecordSeek%2C0)%3ARecordSeek()%7D)()%7D)()">RecordSeek</a></p>
+            </div>
+
+            <small class="text-muted hide">Dragging the button above will work on public machines.</small>
+            <button type="button" class="play-trigger btn-link hide" data-toggle="modal" data-target="#modal-video">
+                <i class="fa fa-youtube-play"></i> Watch the video
+            </button>
+        </div>
+        <!--//container-->
+    </section>
+    <!--//promo-->
+
+    <div class="sections-wrapper">
+
+
+        <!-- ******Why Section****** -->
+        <section id="why" class="section why no-padding">
+            <div class="container">
+                <h2 class="title text-center">How Can RecordSeek Help You?</h2>
+
+                <p class="intro text-center">We make it effortless to record a source so you can spend more time researching.</p>
+
+                <div class="row item">
+                    <div class="content col-md-4 col-sm-12 col-xs-12">
+                        <h3 class="title">Save you time and effort</h3>
+
+                        <div class="desc">
+                            <p>We take any website on the net, and convert it to a source citation automatically. With the help of our technology recording sources becomes a joy, rather than a struggle.</p>
+
+                            <p>RecordSeek automatically creates a MLA format source citation for you, so you get the benefit of an official citation, without the frustration.</p>
+                        </div>
+                        <div class="quote">
+                            <div class="quote-profile">
+                                <img class="img-responsive img-circle" src="../../../../../assets/images/people/dovy.png" alt=""/>
+                            </div>
+                            <!--//profile-->
+                            <div class="quote-content">
+                                <blockquote>
+                                    <p>RecordSeek was created to save time and make a broken process simple.</p>
+                                </blockquote>
+                                <p class="source">Dovy Paukstys, <small>Creator</small></p>
+                            </div>
+                            <!--//quote-content-->
+                        </div>
+                        <!--//quote-->
+                    </div>
+                    <!--//content-->
+                    <figure class="figure col-md-7 col-sm-12 col-xs-12 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
+                        <img class="img-responsive" src="../../../../../assets/images/figures/recordseek.png" alt=""/>
+                        <figcaption class="figure-caption">(Screenshot: RecordSeek launch page)</figcaption>
+                    </figure>
+                </div>
+                <!--//item-->
+
+
+                <div class="row item">
+                    <div class="content col-md-4 col-sm-12 col-xs-12 col-md-push-8 col-sm-push-0 col-xs-push-0">
+                        <h3 class="title">Works everywhere</h3>
+
+                        <div class="desc">
+                            <p>RecordSeek has been designed to work for mobile as well as desktop uses. With a few simple instructions you can use RecordSeek on the go.</p>
+
+                            <p>And with the simplicity of our bookmarklet, you can go to any library and be using RecordSeek without installing a thing. Portability is important to us.</p>
+
+                            <p class="hide"><i class="fa fa-book"></i> <a href="http://recordseek.com/share/assets/images/about/get_started/get_started/">Installation Instructions</a></p>
+                        </div>
+                    </div>
+                    <!--//content-->
+                    <figure class="figure col-md-7 col-sm-12 col-xs-12 col-md-pull-4 col-sm-pull-0 col-xs-pull-0">
+                        <img class="img-responsive" src="../../../../../assets/images/figures/responsive.png" alt=""/>
+
+                        <div class="control text-center">
+                            <button type="button" class="play-trigger hide" data-toggle="modal" data-target="#modal-video">
+                                <i class="fa fa-play"></i></button>
+                        </div>
+                        <!--//control-->
+                    </figure>
+                </div>
+                <!--//item-->
+            </div>
+        </section>
+        
+        <!-- ******CTA Section****** -->
+        <section class="section cta-section text-center pricing-cta-section">
+            <div class="container">
+                <h2 class="title">Over
+                    <span class="countingNumber" data-value="1739007"></span> Sources Created
+                    <!--<br /><small style="font-size:.5em">--><!-- Sources Created on Partner Sites</small>-->
+                </h2>
+
+
+	        <p class="intro">Install one of our browser extensions<br></p>
+		<div>
+			<div class="tooltip">
+			  <a href="https://chrome.google.com/webstore/detail/recordseek/ekdikahbgfofidpjnldofcelffahiefl" target="_blank" class="tooltio">
+			    <span id="browsers" class="chrome"></span>
+			  </a> 
+			  <span class="tooltiptext">Chrome</span>
+			</div>
+			<div class="tooltip">
+			  <a href="https://addons.mozilla.org/en-US/firefox/addon/recordseek/" target="_blank" class="tooltio">
+			    <span id="browsers" class="firefox"></span>
+			  </a> 
+			  <span class="tooltiptext">Firefox</span>
+			</div>
+			<div class="tooltip">
+			  <a href="https://addons.opera.com/en/extensions/details/recordseek/" target="_blank" class="tooltio">
+			    <span id="browsers" class="opera"></span>
+			  </a> 
+			  <span class="tooltiptext">Opera</span>
+			</div>
+			<div class="tooltip coming_soon">
+			  <a href="#" target="_blank" class="tooltio">
+			    <span id="browsers" class="edge"></span>
+			  </a> 
+			  <span class="tooltiptext">Edge<br>Coming Soon</span>
+			</div>
+			<div class="tooltip coming_soon">
+			  <a href="#" target="_blank" class="tooltio">
+			    <span id="browsers" class="safari"></span>
+			  </a> 
+			  <span class="tooltiptext">Safari<br>Coming Soon</span>
+			</div>
+		</div>
+	        <div style="padding-top:15px;">
+	            <small style="margin-bottom:10px; display:block;">or drag the button below to your browser's bookmark bar</small>
+		    <p><a class="btn btn-sm btn-cta-primary" href="javascript:(function()%7Bjavascript%3A(function()%7Bfunction%20h(a)%7Bvar%20g%3Ddocument.getElementsByTagName('*')%2Cb%3Bfor(b%20in%20g)if(-1%3C('%20'%2Bg%5Bb%5D.className%2B'%20').indexOf('%20'%2Ba%2B'%20'))return%20g%5Bb%5D%7Dfunction%20e(b)%7Bvar%20a%3Ddocument.getElementsByTagName('meta')%3Bfor(i%3D0%3Bi%3Ca.length%3Bi%2B%2B)if(a%5Bi%5D.getAttribute('property')%3D%3Db)return%20a%5Bi%5D.getAttribute('content')%3Breturn!1%7Dvar%20k%3D'https%3A'%3D%3Ddocument.location.protocol%3F'https%3A%2F%2F'%3A'http%3A%2F%2F'%2Ca%3D''%3Bh('citation')%26%26(a%3Dh('citation').getElementsByTagName('p')%2C0%3Ca.length%26%26(a%3Da%5B0%5D.textContent%7C%7Ca%5B0%5D.innerText))%3Bvar%20b%3Ddocument.getElementsByTagName('h1')%2Cc%3D''%3B0%3Cb.length%26%26(c%3Db%5B0%5D.textContent%7C%7Cb%5B0%5D.innerText)%3Bb%3Ddocument.title%3Bc%26%26c.length%3Edocument.title.length%26%26(b%3Dc)%3Bvar%20d%3D''%2B(window.getSelection%3Fwindow.getSelection()%3Adocument.getSelection%3Fdocument.getSelection()%3Adocument.selection.createRange().text)%3B''%3D%3Dd%26%26e('description')%3Fd%3De('description')%3A''%3D%3Dd%26%26e('og%3Adescription')%26%26(d%3De('og%3Adescription'))%3Bf%3Dk%2B'recordseek.com%2Fshare%2F%3F_%3D'%2B(new%20Date).getTime()%2B'%26url%3D'%2BencodeURIComponent(window.location.href)%2B'%26h1%3D'%2Bc%2B'%26citation%3D'%2BencodeURIComponent(a)%2B'%26title%3D'%2BencodeURIComponent(b)%2B'%26notes%3D'%2BencodeURIComponent(d)%3BRecordSeek%3Dfunction()%7Bvar%20a%3Dwindow.open(f%2C'rseekwindow'%2C'location%3D1%2Clinks%3D0%2Cscrollbars%3D0%2Ctoolbar%3D0%2Cwidth%3D800%2C%20height%3D620%2C%20top%3D'%2B(screen.height%2F2-310)%2B'%2C%20left%3D'%2B(screen.width%2F2-400))%3Ba%3Fa.focus()%3Awindow.location%3Df%7D%3B%2FFirefox%2F.test(navigator.userAgent)%3FsetTimeout(RecordSeek%2C0)%3ARecordSeek()%7D)()%7D)()">RecordSeek</a></p>
+		</div>
+
+            </div>
+            <!--//container-->
+        </section><!--//cta-section-->
+            <!-- ******Why Section****** -->
+        <section id="why2" class="section why">
+            <div class="container">
+                <div class="row item ">
+                    <div class="content col-md-4 col-sm-12 col-xs-12">
+                        <h3 class="title">FamilySearch & Ancestry</h3>
+
+                        <div class="desc">
+                            <p>We aim to support the biggest players in the industry. Currently RecordSeek allows you to link your sources to
+                                <a href="http://familysearch.org" target="_blank">FamilySearch</a> or
+                                <a href="http://ancestry.com" target="_blank">Ancestry</a>. We'll gladly expand our integrations to others.
+                            </p>
+
+                            <p>Working together we can build a complete solution for users and developers across the world.</p>
+                        </div>
+
+                    </div>
+                    <!--//content-->
+                    <figure class="figure col-md-7 col-sm-12 col-xs-12 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
+                        <img class="img-responsive" src="../../../../../assets/images/figures/ancestryfs.png" alt=""/>
+                        <figcaption class="figure-caption">(Screenshot:
+                            <a href="http://familysearch.org" target="_blank">FamilySearch.org</a> and
+                            <a href="http://ancestry.com" target="_blank">Ancestry.com)</a></figcaption>
+
+                    </figure>
+                </div>
+                <!--//item-->
+
+                <div class="row item last-item">
+                    <div class="content col-md-4 col-sm-12 col-xs-12 col-md-push-8 col-sm-push-0 col-xs-push-0">
+                        <h3 class="title">Collaborate with others</h3>
+
+                        <div class="desc">
+                            <p>The whole reason we cite sources is to ensure we don't duplicate effort. With our help you ensure others are not looking for the same records you are.</p>
+
+                            <p>With citations, family fiction fades away. We all want to prove our ancestors existed, so why not work together?</p>
+
+                            <div class="quote">
+                                <div class="quote-content no-arrow">
+                                    <blockquote>
+                                        <p>Teamwork is the ability to work together toward a common vision. The ability to direct individual accomplishments toward organizational objectives. It is the fuel that allows common people to attain uncommon results.</p>
+                                    </blockquote>
+                                    <p class="source">Andrew Carnegie</p>
+                                </div>
+                            </div>
+                            <!--//quote-->
+                        </div>
+
+
+                    </div>
+                    <!--//content-->
+                    <figure class="figure col-md-7 col-sm-12 col-xs-12 col-md-pull-4 col-sm-pull-0 col-xs-pull-0">
+                        <img class="img-responsive" src="../../../../../assets/images/figures/map.png" alt=""/>
+                    </figure>
+                </div>
+                <!--//item-->
+
+                <div class="feature-lead text-center hide">
+                    <h4 class="title">Want to discover all the features?</h4>
+
+                    <p><a class="btn btn-cta btn-cta-secondary" href="http://recordseek.com/share/assets/images/about/get_started/features/">Take a Tour</a></p>
+                </div>
+            </div>
+            <!--//container-->
+        </section>
+        <!--//why-->
+
+        <!-- ******Testimonials Section****** -->
+        <section class="section testimonials">
+            <div class="container">
+                <h2 class="title text-center">What are people saying about RecordSeek?</h2>
+
+                <div id="testimonials-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#testimonials-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#testimonials-carousel" data-slide-to="1"></li>
+                    </ol>
+                    <!--//carousel-indicators-->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <figure class="profile"><img src="../../../../../assets/images/people/luisa-m.png" alt=""/></figure>
+                            <div class="content">
+                                <blockquote>
+                                    <i class="fa fa-quote-left"></i>
+
+                                    <p>I just seriously needed to thank you so much for RecordSeek. I love it so much and use it hundreds of times a day it seems. It has made family history so much easier and I am so grateful that you have developed it.</p>
+                                </blockquote>
+                                <p class="source">Luisa</p>
+                            </div>
+                            <!--//content-->
+                        </div>
+                        <!--//item-->
+                        <div class="item">
+                            <div class="content">
+                                <blockquote>
+                                    <i class="fa fa-quote-left"></i>
+
+                                    <p>If you have ever found or stumbled onto a great document, picture or website of information about one of your ancestors, and did not know how to create a source on familysearch, or on Ancestry.com, now you can do it with a few mouse clicks and no technical expertise or programming knowledge needed. The tool does all of the heavy lifting, all you need to do is identify your ancestor so the documentation link can be attached.</p>
+                                </blockquote>
+                                <p class="source">David Penrod</p>
+                            </div>
+                            <!--//content-->
+                        </div>
+                        <!--//item-->
+
+                    </div>
+                    <!--//carousel-inner-->
+
+                </div>
+                <!--//carousel-->
+            </div>
+            <!--//container-->
+        </section>
+        <!--//testimonials-->
+
+        <!-- ******Press Section****** -->
+        <section class="section press">
+            <div class="container text-center">
+                <h2 class="title">Press Coverage</h2>
+                <ul class="press-list list-inline row last">
+                                                <li class="col-md-4 col-sm-4 col-xs-4">
+                                <a href="https://www.pinterest.com/ofsltraining/recordseek-tree-connect/" title="" class="text-muted" target="_blank">Pinterest</a> <i class="fa fa-external-link"></i></li>
+                                                        <li class="col-md-4 col-sm-4 col-xs-4">
+                                <a href="http://www.geneamusings.com/2013/01/using-recordseek-to-add-sources-to.html" title="Using RecordSeek to Add Sources to the FamilySearch Family Tree" class="text-muted" target="_blank">Genea-Musings</a> <i class="fa fa-external-link"></i></li>
+                                                        <li class="col-md-4 col-sm-4 col-xs-4">
+                                <a href="http://genealogysstar.blogspot.com/2013/03/recordseek-automates-adding-sources-to.html" title="RecordSeek automates adding sources to FamilySearch Family Tree" class="text-muted" target="_blank">Genealogy's Star</a> <i class="fa fa-external-link"></i></li>
+                                                        <li class="col-md-4 col-sm-4 col-xs-4">
+                                <a href="http://blog.genealogybank.com/great-family-tree-genealogy-app-tree-connect-by-recordseek.html" title="Tree Connect by RecordSeek" class="text-muted" target="_blank">Genealogy Bank</a> <i class="fa fa-external-link"></i></li>
+                                                        <li class="col-md-4 col-sm-4 col-xs-4">
+                                <a href="http://uvtagg.org/classes/dons/dons-familytreecertifiedprograms.html" title="The FamilyTree Certified Programs" class="text-muted" target="_blank">Utah Valley Technology and Genealogy Group</a> <i class="fa fa-external-link"></i></li>
+                                                        <li class="col-md-4 col-sm-4 col-xs-4">
+                                <a href="http://rejoiceandbeexceedingglad.blogspot.com/2015/06/newly-updated-recordseek-tree-connect.html" title="Newly Updated RecordSeek Tree Connect is back" class="text-muted" target="_blank">Rejoice, and be exceedingly glad...</a> <i class="fa fa-external-link"></i></li>
+                                                        <li class="col-md-4 col-sm-4 col-xs-4">
+                                <a href="http://dovy.io/recordseek/recordseek-redesigned-from-the-ground-up/" title="RecordSeek, Redesigned From the Ground Up - More Power, Same Product" class="text-muted" target="_blank">Dovy.io</a> <i class="fa fa-external-link"></i></li>
+                                                        <li class="col-md-4 col-sm-4 col-xs-4">
+                                <a href="http://genealogysstar.blogspot.com/2015/07/gathering-source-information-with.html" title="Gathering Source information with RecordSeek" class="text-muted" target="_blank">Genealogy's Star</a> <i class="fa fa-external-link"></i></li>
+                                                        <li class="col-md-4 col-sm-4 col-xs-4">
+                                <a href="http://www.freegenealogyhelp.com/recordseek-add-an-online-source-to-familysearch-or-ancestry/" title="RecordSeek: Add an online source to FamilySearch or Ancestry" class="text-muted" target="_blank">Free Genealogy Help</a> <i class="fa fa-external-link"></i></li>
+                            
+                </ul>
+
+
+                <div class="press-lead text-center">
+                    <h3 class="title">Have press inquires?</h3>
+
+                    <p class="press-links"><a href="http://recordseek.com/share/assets/images/about/get_started/about/">Grab our Press Materials</a> or
+                        <a href="http://recordseek.com/share/assets/images/about/get_started/contact/">get in touch</a>
+                    </p>
+                </div>
+
+            </div>
+            <!--//container-->
+        </section>
+        <!--//press-->
+
+        <!-- ******CTA Section****** -->
+        <section id="cta-section" class="section cta-section text-center home-cta-section">
+            <div class="container">
+                <h2 class="title">Developers: Are you ready to integrate <br/>RecordSeek on your website?</h2>
+
+                <p class="intro"><span class="counting">Don't waste time!</span> Use our technology to <br/>connect your records to the services we support.</p>
+
+                <p>
+                    <a class="btn btn-cta btn-cta-primary" href="http://recordseek.com/share/assets/images/about/get_started/developers/">Developer Toolkit</a>
+                </p>
+            </div>
+            <!--//container-->
+        </section>
+        <!--//cta-section-->
+
+    </div>
+    <!--//section-wrapper-->
+
+<!-- Video Modal -->
+<div class="modal modal-video" id="modal-video" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 id="videoModalLabel" class="modal-title sr-only">Video Tour</h4>
+            </div>
+            <div class="modal-body">
+                <div class="video-container">
+                    <!--<iframe id="vimeo-video" src="//player.vimeo.com/video/28872840?color=ffffff&amp;wmode=transparent" width="720" height="405" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
+                </div>
+                <!--//video-container-->
+            </div>
+            <!--//modal-body-->
+        </div>
+        <!--//modal-content-->
+    </div>
+    <!--//modal-dialog-->
+</div>
+<!--//modal-->
+
+<!-- ******FOOTER****** -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col links col-md-2 col-sm-4 col-xs-6">
+                    <div class="footer-col-inner">
+                        <h3 class="title">About us</h3>
+                        <ul class="list-unstyled">
+                            <li><a href="../../../../../about/index.html"><i class="fa fa-caret-right"></i>Who we are</a></li>
+                            <li class="hide"><a href="../../../../../blog.html"><i class="fa fa-caret-right"></i>Blog</a></li>
+                        </ul>
+                    </div>
+                    <!--//footer-col-inner-->
+                </div>
+                <!--//foooter-col-->
+                <div class="footer-col links col-md-2 col-sm-4 col-xs-6">
+                    <div class="footer-col-inner">
+                        <h3 class="title">Product</h3>
+                        <ul class="list-unstyled">
+
+                            <li><a href="../../../../../developers/index.html"><i class="fa fa-caret-right"></i>Developers</a></li>
+                        </ul>
+                    </div>
+                    <!--//footer-col-inner-->
+                </div>
+                <!--//foooter-col-->
+                <div class="footer-col links col-md-3 col-sm-4 col-xs-6 sm-break">
+                    <div class="footer-col-inner">
+                        <h3 class="title">Support</h3>
+                        <ul class="list-unstyled">
+                            <li><a href="../../../../../faq/index.html"><i class="fa fa-caret-right"></i>FAQ</a></li>
+                            <li><a href="../../../../../contact/index.html"><i class="fa fa-caret-right"></i>Help</a></li>
+                            <li class="hide"><a href="#"><i class="fa fa-caret-right"></i>Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+                    <!--//footer-col-inner-->
+                </div>
+                <!--//foooter-col-->
+                <div class="footer-col connect col-md-5 col-sm-6 col-xs-6">
+                    <div class="footer-col-inner">
+                        <h4 class="title">Stay in Touch</h4>
+                        <ul class="social list-inline">
+                            <li>
+                                <a href="https://twitter.com/RecordSeek" target="_blank"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/RecordSeek"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="mailto:me@dovy.io?subject=RecordSeek"><i class="fa fa-mail"></i></a>
+                            </li>
+                        </ul>
+                        <p class="email hide">
+                            <i class="fa fa-envelope-o" style="margin-right: 10px;font-size: 20px;"></i><a href="mailto:support@recordseek.com">support@recordseek.com</a>
+                        </p>
+
+                        <div id="share"></div>
+                        <script></script>
+                        <div class="form-container hide">
+                            <p class="intro">Stay up to date with the latest news and offers from Velocity</p>
+
+                            <form class="signup-form navbar-form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Enter your email address">
+                                </div>
+                                <button type="submit" class="btn btn-cta btn-cta-primary">Subscribe Now</button>
+                            </form>
+                        </div>
+                        <!--//subscription-form-->
+                    </div>
+                    <!--//footer-col-inner-->
+                </div>
+                <!--//foooter-col-->
+                <div class="clearfix"></div>
+            </div>
+            <!--//row-->
+            <div class="row has-divider hide">
+                <div class="footer-col download col-md-6 col-sm-6 col-xs-6">
+                    <div class="footer-col-inner">
+                        <h3 class="title">Mobile apps</h3>
+                        <ul class="list-unstyled download-list">
+                            <li>
+                                <a class="btn btn-ghost" href="#"><i class="fa fa-apple"></i><span class="text">Download for iOS</span>
+                                </a></li>
+                            <li>
+                                <a class="btn btn-ghost" href="#"><i class="fa fa-android"></i><span class="text">Download for Android</span></a>
+                            </li>
+                            <li>
+                                <a class="btn btn-ghost" href="#"><i class="fa fa-windows"></i><span class="text">Windows coming soon...</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--//footer-col-inner-->
+                </div>
+                <!--//download-->
+                <div class="footer-col download col-md-6 col-sm-6 col-xs-6">
+                    <div class="footer-col-inner">
+                        <h3 class="title">Browser Extensions</h3>
+                        <ul class="list-unstyled download-list">
+                            <li>
+                                <a class="btn btn-ghost" href="#"><i class="fa fa-apple"></i><span class="text">Download for Chrome</span>
+                                </a></li>
+                            <li>
+                                <a class="btn btn-ghost" href="#"><i class="fa fa-android"></i><span class="text">Download for Firefox</span></a>
+                            </li>
+                            <li>
+                                <a class="btn btn-ghost" href="#"><i class="fa fa-windows"></i><span class="text">Download for Safari</span></a>
+                            </li>
+                            <li>
+                                <a class="btn btn-ghost" href="#"><i class="fa fa-opera"></i><span class="text">Download for Opera</span></a>
+                            </li>
+                            <li>
+                                <a class="btn btn-ghost" href="#"><i class="fa fa-globe"></i><span class="text">Download our Bookmarklet</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--//footer-col-inner-->
+                </div>
+                <!--//contact-->
+            </div>
+        </div>
+        <!--//container-->
+    </div>
+    <!--//footer-content-->
+    <div class="bottom-bar">
+        <div class="container">
+            <small class="copyright">Copyright @ 2012 - 2021                <a href="http://dovy.io/" target="_blank">Dovy Paukstys</a></small>
+        </div>
+        <!--//container-->
+    </div>
+    <!--//bottom-bar-->
+</footer>
+<!--//footer-->
+
+<!-- Javascript -->
+<script type="text/javascript" src="../../../../../assets/plugins/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="../../../../../assets/plugins/waypoint/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="../../../../../assets/plugins/waypoint/waypoints.debug.js"></script>
+<script type="text/javascript" src="../../../../../assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="../../../../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../../../assets/plugins/bootstrap-hover-dropdown.min.js"></script>
+<script type="text/javascript" src="../../../../../assets/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="../../../../../assets/plugins/jquery-placeholder/jquery.placeholder.js"></script>
+<script type="text/javascript" src="../../../../../assets/plugins/FitVids/jquery.fitvids.js"></script>
+<script type="text/javascript" src="../../../../../assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="../../../../../assets/js/jssocials.min.js"></script>
+<script type="text/javascript" src="../../../../../assets/js/main.js"></script>
+
+<!-- Vimeo video API -->
+<!--<script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>-->
+<!--<script type="text/javascript" src="/assets/js/vimeo.js"></script>-->
+    <script type="text/javascript">
+      var _gaq=[["_setAccount","UA-16096334-10"],["_trackPageview"],['_setDomainName', 'recordseek.com'],['_setAllowLinker', true]];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+      g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+      s.parentNode.insertBefore(g,s)}(document,"script"));
+    </script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"NRJS-27f7eb4994591fa5743","applicationID":"440306668","transactionName":"ZQYBMhFSXEVWVRBaDFxMNhQKHFtYU1McHRNaEw==","queueTime":0,"applicationTime":0,"atts":"SUECRFlIT0s=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+<script>
+	window.fwSettings={
+	'widget_id':33000000054
+	};
+	!function(){if("function"!=typeof window.FreshworksWidget){var n=function(){n.q.push(arguments)};n.q=[],window.FreshworksWidget=n}}() 
+</script>
+<script type='text/javascript' src='https://widget.freshworks.com/widgets/33000000054.js' async defer></script>
+</html>
+
