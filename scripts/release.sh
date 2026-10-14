@@ -6,18 +6,34 @@
 #
 # Usage: scripts/release.sh            # build both
 #        SKIP_SHARE=1 scripts/release.sh   # site only
+#        SKIP_SITE=1 scripts/release.sh    # share app only
 #        APP_REF=some-branch scripts/release.sh
+#        APP_ENV_FILE=path/to/.env scripts/release.sh
+#
+# The share app reads its FamilySearch app key, environment and Sentry DSN from
+# a Vite .env file at build time. A fresh clone has none, so it is copied in
+# from APP_ENV_FILE (default: the local recordseek-app checkout's).
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 APP_REPO="${APP_REPO:-https://github.com/recordseek/recordseek-app.git}"
 APP_REF="${APP_REF:-master}"
 APP_DIR="$ROOT/.release-cache/recordseek-app"
+APP_ENV_FILE="${APP_ENV_FILE:-$ROOT/../recordseek-app/packages/web/.env}"
 MANIFEST="$ROOT/.site-manifest"
 
 log() { printf '\n==> %s\n' "$*"; }
 
+# Fail before building anything if the share app would ship without an app key.
+if [ -z "${SKIP_SHARE:-}" ]; then
+  grep -qE '^VITE_FS_APP_KEY=.+' "$APP_ENV_FILE" 2>/dev/null || {
+    echo "No VITE_FS_APP_KEY in $APP_ENV_FILE; set APP_ENV_FILE to the share app's .env" >&2
+    exit 1
+  }
+fi
+
 # ---------------------------------------------------------------- site
+if [ -z "${SKIP_SITE:-}" ]; then
 log "Building marketing site (web/)"
 cd "$ROOT/web"
 if [ ! -d node_modules ] || [ package-lock.json -nt node_modules ]; then
@@ -52,6 +68,7 @@ redirect get_started/index.html /bookmarklet/
 redirect mobile/index.html /#mobile
 redirect blog.html /
 sort -u -o "$MANIFEST" "$MANIFEST"
+fi
 
 # ---------------------------------------------------------------- share
 if [ -z "${SKIP_SHARE:-}" ]; then
@@ -65,8 +82,9 @@ if [ -z "${SKIP_SHARE:-}" ]; then
   fi
   APP_SHA="$(git -C "$APP_DIR" rev-parse --short HEAD)"
   cd "$APP_DIR"
+  cp "$APP_ENV_FILE" packages/web/.env
   pnpm install --frozen-lockfile --silent
-  pnpm --filter @recordseek/web build:share
+  VITE_RELEASE="recordseek-app@$APP_SHA" pnpm --filter @recordseek/web build:share
   [ -f packages/web/dist/index.html ] || { echo "Share build produced no index.html" >&2; exit 1; }
   rsync -a --delete packages/web/dist/ "$ROOT/share/"
   echo "recordseek-app@$APP_SHA" > "$ROOT/share/VERSION"
