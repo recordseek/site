@@ -1,0 +1,71 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router';
+import { ExternalLink, PageShell } from '@/components/site-chrome';
+
+export const Route = createFileRoute('/eula')({
+  head: () => ({ meta: [
+    { title: 'End User License Agreement (EULA) — RecordSeek' },
+    { name: 'description', content: 'The license agreement for using the RecordSeek website, browser extensions and mobile app: a free, personal-use license with no in-app purchases.' },
+    { property: 'og:title', content: 'End User License Agreement (EULA) — RecordSeek' },
+    { property: 'og:description', content: 'A free, personal-use license for the RecordSeek website, browser extensions and mobile app.' },
+    { property: 'og:type', content: 'website' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+  ] }),
+  component: Eula,
+});
+
+function Eula() {
+  return <PageShell
+    eyebrow="EULA"
+    title="End User License Agreement."
+    intro="This agreement covers the RecordSeek website, browser extensions and mobile app."
+  >
+    <section className="container-wide page-section">
+      <div className="legal">
+        <p><em>Last updated: October 2026.</em> This End User License Agreement ("Agreement") is between you and RecordSeek and governs your use of the RecordSeek website, browser extensions, bookmarklet, and mobile application (together, the "Software"). By installing or using the Software, you agree to this Agreement. RecordSeek is free to use, including the mobile app and all browser extensions — there are no subscriptions, ads, or in-app purchases.</p>
+
+        <h2>License grant</h2>
+        <p>RecordSeek grants you a free, personal, non-exclusive, non-transferable, revocable license to install and use the Software for your own family-history research. You may install it on any number of your own devices and browsers.</p>
+
+        <h2>What you may not do</h2>
+        <p>You may not:</p>
+        <ul>
+          <li>Sell, rent, sublicense, or redistribute the Software or any part of it;</li>
+          <li>Reverse engineer, decompile, or disassemble the Software, except where that restriction is not allowed by law;</li>
+          <li>Remove or alter any copyright, trademark, or attribution notices;</li>
+          <li>Use the Software to build a competing product or service;</li>
+          <li>Use the Software in any way that violates the terms of FamilySearch, Ancestry, or the app or extension store it was downloaded from, or any applicable law.</li>
+        </ul>
+
+        <h2>Third-party services</h2>
+        <p>The Software connects to FamilySearch and Ancestry so you can save citations to your own trees. RecordSeek is not affiliated with, endorsed by, or acting for either organization. Your use of those services is governed by their own agreements, and the citations you save belong to you and to those services — never to us.</p>
+        <ul>
+          <li><ExternalLink href="https://www.familysearch.org/en/legal">FamilySearch legal notices</ExternalLink></li>
+          <li><ExternalLink href="https://www.ancestry.com/corporate/about-ancestry/legal/terms-and-conditions">Ancestry Terms and Conditions</ExternalLink></li>
+        </ul>
+        <p>The Software never stores your sign-in credentials — you authenticate directly with the service you're saving to.</p>
+
+        <h2>Updates</h2>
+        <p>We may update the Software from time to time, including automatically for browser extensions. Stores such as the Chrome Web Store, Firefox Add-ons, Opera Add-ons, the App Store, and Google Play may also deliver updates on their own schedule. These terms apply to all updates unless an update comes with its own, different terms.</p>
+
+        <h2>Ownership</h2>
+        <p>The Software is licensed, not sold. RecordSeek keeps all right, title, and interest in the Software, including all intellectual property rights. The RecordSeek name and logo belong to RecordSeek.</p>
+
+        <h2>No warranty</h2>
+        <p>The Software is provided "as is" and "as available", free of charge, without warranties of any kind, express or implied — including merchantability, fitness for a particular purpose, accuracy, and uninterrupted or error-free operation. Because citations are saved to third-party services we don't control, we can't guarantee any particular result.</p>
+
+        <h2>Limitation of liability</h2>
+        <p>To the fullest extent permitted by law, RecordSeek and its creator are not liable for any indirect, incidental, special, or consequential damages — or any loss of data, research, or records — arising from your use of, or inability to use, the Software, including anything saved to, changed in, or lost from a third-party service.</p>
+
+        <h2>Termination</h2>
+        <p>This license lasts until you or RecordSeek end it. You can end it any time by uninstalling the extensions or the app and stopping your use of the website. We may end it immediately if you break this Agreement. On termination, stop using and uninstall the Software; sections that should logically survive (ownership, no warranty, limitation of liability) do.</p>
+
+        <h2>Governing terms</h2>
+        <p>This Agreement works together with our <Link to="/terms">Terms &amp; Conditions</Link> and <Link to="/privacy">Privacy Policy</Link>. If any part of this Agreement is found unenforceable, the rest stays in force.</p>
+
+        <h2>Contact</h2>
+        <p>Questions about this Agreement? Email <a href="mailto:me@dovy.io">me@dovy.io</a>.</p>
+      </div>
+    </section>
+  </PageShell>;
+}

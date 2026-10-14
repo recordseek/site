@@ -1,0 +1,14 @@
+# RecordSeek refresh
+- [x] Refresh the homepage with a modern visual identity and clear extension downloads.
+- [x] Highlight the upcoming mobile app without implying it is released.
+- [x] Verify download interactions and desktop/mobile layouts.
+- [x] Restore the original RecordSeek logo (mark + wordmark) across header, steps and phone mockup.
+- [x] Use official FamilySearch and Ancestry icons in the integration band and connection step.
+- [x] Revert FamilySearch/Ancestry marks to original brand colors; keep teal only for buttons/accents.
+- [x] Add a stats count to the homepage (static impressive number, manually updated from GA).
+- [ ] Connect Google Analytics for visitor tracking — user declined the connect card; revisit if they ask.
+- [x] Merge info pages from the GitHub site (About, Contact, Developers, FAQ, Features, Get started) into the new design; Share window stays on recordseek.com.
+- [x] Contact page: support email is me@dovy.io, no contact form — visitors email directly.
+- [x] Add Privacy Policy and Terms & Conditions pages (plain-language, "general logs and analytics only" privacy); linked from the footer.
+- [x] Add EULA page covering website, extensions and mobile app (free license, no in-app purchases); linked from the footer.
+- [x] Rename Get Started page to Bookmarklet (/bookmarklet); top menu "Bookmark" now links to it; updated FAQ text and homepage installation-guide link.

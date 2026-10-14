@@ -1,0 +1,5 @@
+.release-cache/
+web/node_modules/
+web/.output/
+web/.tanstack/
+.DS_Store
