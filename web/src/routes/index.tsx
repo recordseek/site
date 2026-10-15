@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowDown, ArrowRight, ArrowUpRight, BatteryFull, Bookmark, BookOpen, Check, CheckCheck, ChevronRight, Compass, Download, Globe, Link2, Menu, Plus, Puzzle, Quote, Search, ShieldCheck, Smartphone, Sparkles, TreeDeciduous, Wifi, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Brand, BookmarkletButton, SiteFooter, SiteHeader } from '@/components/site-chrome';
+import { track } from '@/lib/analytics';
 import archiveImage from '@/assets/family-archive.jpg';
 import markImage from '@/assets/recordseek-mark.png';
 import familySearchLogo from '@/assets/familysearch-logo.png';
@@ -41,7 +42,7 @@ function Index() {
   const [dialog, setDialog] = useState<'extensions' | 'mobile' | null>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
-  const openDialog = (type: 'extensions' | 'mobile') => { triggerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null; setDialog(type); };
+  const openDialog = (type: 'extensions' | 'mobile') => { triggerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null; setDialog(type); track(type === 'mobile' ? 'mobile_app_interest' : 'extensions_dialog_opened'); };
   useEffect(() => {
     if (!dialog) return;
     const previousOverflow = document.body.style.overflow;

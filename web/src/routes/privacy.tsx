@@ -54,10 +54,10 @@ function Privacy() {
           <li><ExternalLink href="https://www.familysearch.org/en/legal/privacy">FamilySearch Privacy Policy</ExternalLink></li>
           <li><ExternalLink href="https://www.ancestry.com/corporate/about-ancestry/privacy">Ancestry Privacy Statement</ExternalLink></li>
         </ul>
-        <p>We also use standard analytics providers to measure anonymous site traffic. Analytics cannot tell us who you are — only how the site is being used.</p>
+        <p>We use <ExternalLink href="https://posthog.com/privacy">PostHog</ExternalLink> to measure anonymous usage of recordseek.com and the RecordSeek share window: pages viewed, which browser extension you choose, and steps such as signing in to FamilySearch or saving a source. We send PostHog the website of the page you're citing (for example, findagrave.com) but never its full address, title, citation, notes, names or any record from your tree, and we don't record your screen. When you're signed in to FamilySearch, we also send PostHog a scrambled code made from your FamilySearch user ID (a one-way hash), so we can count how many people use RecordSeek across their devices. It's the same code every time, but it can't be turned back into your ID, and we never send your name, email or FamilySearch ID itself.</p>
 
         <h2>Cookies</h2>
-        <p>RecordSeek uses only the cookies that analytics providers set for anonymous measurement, plus any cookies FamilySearch or Ancestry set during your own sign-in with them. We set no cookies of our own and do not track you across other websites.</p>
+        <p>RecordSeek sets no analytics cookies: PostHog keeps its random visitor ID in your browser's local storage. The only cookies involved are the ones FamilySearch or Ancestry set during your own sign-in with them. We set no cookies of our own and do not track you across other websites.</p>
 
         <h2>Children's privacy</h2>
         <p>RecordSeek is a general-audience tool. We collect no personal information from anyone, so we collect none from children.</p>
