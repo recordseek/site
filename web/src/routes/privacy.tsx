@@ -38,6 +38,16 @@ function Privacy() {
           <li><strong>Passwords or payment information.</strong> We don't have accounts, subscriptions, or a store, so there is nothing to store.</li>
         </ul>
 
+        <h2>Browser extensions</h2>
+        <p>The RecordSeek extensions for Chrome, Firefox, Safari, Edge, Opera and other browsers do nothing until you click the RecordSeek button or menu item. They do not read, collect or monitor the pages you browse in the background.</p>
+        <ul>
+          <li><strong>When you click RecordSeek,</strong> the extension reads the current page's address, title, main heading, any text you have selected and, on supported genealogy sites, the record details on the page. It opens RecordSeek with that information so you can build the citation. Nothing else is read.</li>
+          <li><strong>Settings</strong>, such as the "forget my session" option, are saved only in your browser's extension storage.</li>
+          <li><strong>The "forget my session" option</strong> uses the cookies permission for one thing: removing the RecordSeek and FamilySearch sign-in cookies before the share window opens. The extension never reads, stores or sends cookie values.</li>
+          <li><strong>On recordseek.com,</strong> the extension tells the site which browser and extension version you're using, so the site can show the right instructions.</li>
+        </ul>
+        <p>The extensions contain no ads and no trackers, and they do not load remote code. We never sell or share extension data, or use it for anything other than building your citation.</p>
+
         <h2>Third-party services</h2>
         <p>RecordSeek connects to FamilySearch and Ancestry when you choose to save a citation. Those services have their own privacy policies, which apply to the data you save with them:</p>
         <ul>

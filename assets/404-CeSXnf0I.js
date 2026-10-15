@@ -1,0 +1,1 @@
+import{t as e}from"./index-KkKlsOdt.js";var t=e;export{t as component};
