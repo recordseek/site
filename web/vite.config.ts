@@ -13,7 +13,8 @@ export default defineConfig({
     server: { entry: "server" },
     // recordseek.com is served as static files from GitHub Pages, so every route is
     // prerendered to <route>/index.html at build time.
-    prerender: { enabled: true, crawlLinks: true },
+    // /sdk/ and /share/ are separate apps copied in by scripts/release.sh.
+    prerender: { enabled: true, crawlLinks: true, filter: ({ path }: { path: string }) => !/^\/(sdk|share)(\/|$)/.test(path) },
     // GitHub Pages serves 404.html for unknown paths.
     pages: [{ path: "/404", prerender: { enabled: true, outputPath: "/404.html" } }],
   },

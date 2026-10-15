@@ -3,6 +3,7 @@
 # the `site` branch root as-is):
 #   1. the marketing site from web/ (TanStack Start, prerendered to static HTML)
 #   2. the share app from recordseek/recordseek-app, built fresh into share/
+#   3. the developer kit (packages/sdk) from the same checkout, into sdk/
 #
 # Usage: scripts/release.sh            # build both
 #        SKIP_SHARE=1 scripts/release.sh   # site only
@@ -47,7 +48,7 @@ OUT="$ROOT/web/.output/public"
 # Remove what the previous release put in the root, then copy the new build.
 if [ -f "$MANIFEST" ]; then
   while IFS= read -r entry; do
-    case "$entry" in ""|share|web|scripts|.git*|CNAME) continue ;; esac
+    case "$entry" in ""|share|sdk|web|scripts|.git*|CNAME) continue ;; esac
     rm -rf "${ROOT:?}/$entry"
   done < "$MANIFEST"
 fi
@@ -88,6 +89,30 @@ if [ -z "${SKIP_SHARE:-}" ]; then
   [ -f packages/web/dist/index.html ] || { echo "Share build produced no index.html" >&2; exit 1; }
   rsync -a --delete packages/web/dist/ "$ROOT/share/"
   echo "recordseek-app@$APP_SHA" > "$ROOT/share/VERSION"
+
+  # Developer kit: /sdk/ (docs), /sdk/v<major>/ (moving), /sdk/<x.y.z>/ (pinned,
+  # for SRI — never changes once published, so a code change needs a version bump).
+  log "Building developer kit"
+  pnpm --filter @recordseek/sdk build
+  SDK_DIST="$APP_DIR/packages/sdk/dist"
+  [ -f "$SDK_DIST/recordseek.js" ] && [ -f "$SDK_DIST/version.txt" ] || { echo "SDK build produced no recordseek.js/version.txt" >&2; exit 1; }
+  SDK_VERSION="$(tr -d '[:space:]' < "$SDK_DIST/version.txt")"
+  SDK_PIN="$ROOT/sdk/$SDK_VERSION"
+  SDK_MAJOR="$ROOT/sdk/v${SDK_VERSION%%.*}"
+  if [ -d "$SDK_PIN" ]; then
+    for f in "$SDK_DIST"/*.js; do
+      cmp -s "$f" "$SDK_PIN/$(basename "$f")" || {
+        echo "sdk/$SDK_VERSION is already published with different $(basename "$f"); bump packages/sdk version" >&2
+        exit 1
+      }
+    done
+  fi
+  mkdir -p "$SDK_PIN" "$SDK_MAJOR"
+  for dir in "$SDK_PIN" "$SDK_MAJOR"; do
+    rsync -a --delete --include='*.js' --include='*.js.map' --include='version.txt' --exclude='*' "$SDK_DIST/" "$dir/"
+  done
+  # The docs page loads ./recordseek.js, so /sdk/ gets the whole build too.
+  rsync -a "$SDK_DIST/" "$ROOT/sdk/"
 fi
 
 log "Done. Preview with: scripts/serve.sh"

@@ -1,9 +1,10 @@
 import { Link } from '@tanstack/react-router';
-import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { ArrowRight, ArrowUpRight, Bookmark, Menu, X } from 'lucide-react';
+import { useEffect, useRef, useState, type DragEvent, type ReactNode } from 'react';
+import { ArrowRight, ArrowUpRight, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { bookmarkletHref } from '@/lib/bookmarklet';
 import markImage from '@/assets/recordseek-mark.png';
+import markWhiteImage from '@/assets/recordseek-mark-white.svg';
 
 export function Brand() {
   return <Link className="brand" to="/" aria-label="RecordSeek home"><span className="brand-mark"><img src={markImage} alt="" width={35} height={35} /></span><span className="brand-name">record<span>seek</span></span></Link>;
@@ -11,10 +12,20 @@ export function Brand() {
 
 // React strips javascript: hrefs on render, so the real bookmarklet URL is
 // applied after mount — the anchor stays draggable/clickable like on the original site.
-export function BookmarkletButton() {
+// data-bookmarklet marks every bookmarklet link for analytics.
+export function BookmarkletLink({ className, children }: { className?: string; children: ReactNode }) {
   const linkRef = useRef<HTMLAnchorElement>(null);
   useEffect(() => { linkRef.current?.setAttribute('href', bookmarkletHref); }, []);
-  return <Button className="bookmarklet-button" asChild><a ref={linkRef} title="Drag me to your bookmarks bar" aria-label="RecordSeek bookmarklet — drag to your bookmarks bar"><img src={markImage} alt="" className="bookmarklet-mark" draggable={false} />RecordSeek<span className="bookmarklet-grip"><Bookmark className="size-3.5" /></span></a></Button>;
+  // Drag a picture of the button itself, not the browser's default link-text box.
+  const onDragStart = (event: DragEvent<HTMLAnchorElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    event.dataTransfer.setDragImage(event.currentTarget, event.clientX - rect.left, event.clientY - rect.top);
+  };
+  return <a ref={linkRef} className={className} data-bookmarklet="" title="Drag me to your bookmarks bar" aria-label="RecordSeek bookmarklet — drag to your bookmarks bar" onDragStart={onDragStart}>{children}</a>;
+}
+
+export function BookmarkletButton() {
+  return <Button className="bookmarklet-button" asChild><BookmarkletLink><img src={markWhiteImage} alt="" className="bookmarklet-mark" draggable={false} />RecordSeek</BookmarkletLink></Button>;
 }
 
 const navItems = [

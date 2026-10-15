@@ -39,16 +39,17 @@ function listen(): void {
   document.addEventListener('click', event => {
     const link = (event.target as Element | null)?.closest?.('a');
     if (!link) return;
-    if (link.classList.contains('bookmarklet-button')) {
+    if (link.hasAttribute('data-bookmarklet')) {
       track('bookmarklet_clicked', { page: location.pathname });
       return;
     }
     const href = link.getAttribute('href') ?? '';
     const store = STORES.find(([pattern]) => pattern.test(href));
-    if (store) track('extension_store_clicked', { browser: store[1], placement: placement(link) });
+    // Chromium browsers all share the Chrome Web Store link, so the button names its browser.
+    if (store) track('extension_store_clicked', { browser: link.dataset['browser'] ?? store[1], store: store[1], placement: placement(link) });
   }, true);
   document.addEventListener('dragstart', event => {
-    const link = (event.target as Element | null)?.closest?.('a.bookmarklet-button');
+    const link = (event.target as Element | null)?.closest?.('a[data-bookmarklet]');
     if (link) track('bookmarklet_dragged', { page: location.pathname });
   }, true);
 }

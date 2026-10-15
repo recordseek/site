@@ -1,5 +1,30 @@
-// The original RecordSeek bookmarklet. Opens the share window (800x620) with
-// the current page's URL, title, h1, citation and notes prefilled.
-// Kept byte-identical to recordseek.com so dragged bookmarks behave the same.
-export const bookmarkletHref =
-  'javascript:(function()%7Bjavascript%3A(function()%7Bfunction%20h(a)%7Bvar%20g%3Ddocument.getElementsByTagName(\'*\')%2Cb%3Bfor(b%20in%20g)if(-1%3C(\'%20\'%2Bg%5Bb%5D.className%2B\'%20\').indexOf(\'%20\'%2Ba%2B\'%20\'))return%20g%5Bb%5D%7Dfunction%20e(b)%7Bvar%20a%3Ddocument.getElementsByTagName(\'meta\')%3Bfor(i%3D0%3Bi%3Ca.length%3Bi%2B%2B)if(a%5Bi%5D.getAttribute(\'property\')%3D%3Db)return%20a%5Bi%5D.getAttribute(\'content\')%3Breturn!1%7Dvar%20k%3D\'https%3A\'%3D%3Ddocument.location.protocol%3F\'https%3A%2F%2F\'%3A\'http%3A%2F%2F\'%2Ca%3D\'\'%3Bh(\'citation\')%26%26(a%3Dh(\'citation\').getElementsByTagName(\'p\')%2C0%3Ca.length%26%26(a%3Da%5B0%5D.textContent%7C%7Ca%5B0%5D.innerText))%3Bvar%20b%3Ddocument.getElementsByTagName(\'h1\')%2Cc%3D\'\'%3B0%3Cb.length%26%26(c%3Db%5B0%5D.textContent%7C%7Cb%5B0%5D.innerText)%3Bb%3Ddocument.title%3Bc%26%26c.length%3Edocument.title.length%26%26(b%3Dc)%3Bvar%20d%3D\'\'%2B(window.getSelection%3Fwindow.getSelection()%3Adocument.getSelection%3Fdocument.getSelection()%3Adocument.selection.createRange().text)%3B\'\'%3D%3Dd%26%26e(\'description\')%3Fd%3De(\'description\')%3A\'\'%3D%3Dd%26%26e(\'og%3Adescription\')%26%26(d%3De(\'og%3Adescription\'))%3Bf%3Dk%2B\'recordseek.com%2Fshare%2F%3F_%3D\'%2B(new%20Date).getTime()%2B\'%26url%3D\'%2BencodeURIComponent(window.location.href)%2B\'%26h1%3D\'%2Bc%2B\'%26citation%3D\'%2BencodeURIComponent(a)%2B\'%26title%3D\'%2BencodeURIComponent(b)%2B\'%26notes%3D\'%2BencodeURIComponent(d)%3BRecordSeek%3Dfunction()%7Bvar%20a%3Dwindow.open(f%2C\'rseekwindow\'%2C\'location%3D1%2Clinks%3D0%2Cscrollbars%3D0%2Ctoolbar%3D0%2Cwidth%3D800%2C%20height%3D620%2C%20top%3D\'%2B(screen.height%2F2-310)%2B\'%2C%20left%3D\'%2B(screen.width%2F2-400))%3Ba%3Fa.focus()%3Awindow.location%3Df%7D%3B%2FFirefox%2F.test(navigator.userAgent)%3FsetTimeout(RecordSeek%2C0)%3ARecordSeek()%7D)()%7D)()';
+// The RecordSeek bookmarklet: a small loader, so it can improve without anyone
+// re-dragging it. On click it opens the share popup (popups are only allowed
+// during the click), keeps the selection, and loads /sdk/v1/bookmarklet.js
+// (recordseek-app packages/sdk), which scrapes the page with genscrape and fills
+// the popup. Sites that block outside scripts, or a slow load, fall back to the
+// basic scrape below (the original bookmarklet's: title or longer h1, the
+// .citation paragraph, selection or description).
+//
+// Bookmarks dragged from the old site keep working: /share/ still accepts them.
+
+// VITE_RECORDSEEK_ORIGIN lets a local build point the loader at a local server.
+const ORIGIN = (import.meta.env['VITE_RECORDSEEK_ORIGIN'] || 'https://recordseek.com').replace(/\/$/, '');
+
+// Plain ES5 inside a function: it runs on any page, in any browser.
+const loader = `(function(){
+var w=window,d=document,o=${JSON.stringify(ORIGIN)},s='';
+try{s=''+(w.getSelection?w.getSelection():'')}catch(e){}
+var p=w.open('about:blank','recordseek','width=800,height=620,scrollbars=yes,resizable=yes,location=yes');
+var b=w.__recordseekBookmarklet={win:p,sel:s,done:0};
+function c(t){return(t||'').replace(/\\s+/g,' ').replace(/^ | $/g,'')}
+function m(n){var x=d.querySelector('meta[property="'+n+'"],meta[name="'+n+'"]');return x?x.getAttribute('content'):''}
+function f(){if(b.done)return;b.done=1;
+var h=d.getElementsByTagName('h1')[0],t=c(d.title),x=h?c(h.textContent):'';if(x.length>t.length)t=x;
+var q=d.querySelector('.citation p'),e=encodeURIComponent;
+var u=o+'/share/?_='+(+new Date)+'&url='+e(location.href)+'&title='+e(t)+'&citation='+e(q?c(q.textContent):'')+'&notes='+e(c(s)||c(m('description')||m('og:description')))+'&rs_src=bookmarklet';
+try{if(p&&!p.closed){p.location.href=u;p.focus();return}}catch(e){}location.href=u}
+try{var j=d.createElement('script');j.src=o+'/sdk/v1/bookmarklet.js';j.async=true;j.onerror=f;(d.head||d.documentElement).appendChild(j)}catch(e){f()}
+setTimeout(f,3000)})()`;
+
+export const bookmarkletHref = 'javascript:' + encodeURIComponent(loader.replace(/\n/g, ''));
