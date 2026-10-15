@@ -141,6 +141,8 @@ html { scroll-padding-top: 96px; }
 .mobile-benefits svg { width:15px; color:var(--primary); }
 .phone-scene { position:relative; display:flex; justify-content:center; align-items:center; }
 .phone { width:216px; height:395px; border:6px solid var(--foreground); border-radius:31px; background:var(--card); box-shadow:var(--shadow-phone); transform:rotate(7deg); padding:10px 13px; position:relative; }
+.phone-shot { height:auto; padding:0; overflow:hidden; }
+.phone-shot img { display:block; width:100%; height:auto; }
 .phone-top { display:flex; justify-content:space-between; font-size:8px; font-weight:700; padding:0 2px 13px; }
 .phone-top svg { height:10px; width:10px; }
 .phone .brand { font-size:17px; gap:3px; margin:3px 0 20px; }
